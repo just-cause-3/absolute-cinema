@@ -1,4 +1,3 @@
-
 export interface Movie {
   id: number;
   title: string;
@@ -274,12 +273,9 @@ const baseMovies: Movie[] = [
     runtime: 189,
     director: "Frank Darabont",
     cast: ["Tom Hanks", "Michael Clarke Duncan", "David Morse"]
-  }
-];
-
-// Additional movies to reach 50+ total
-const additionalMovies: Partial<Movie>[] = [
+  },
   {
+    id: 21,
     title: "Whiplash",
     overview: "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a student's potential.",
     posterPath: "https://image.tmdb.org/t/p/w500/6uSPcdGMv4zRYEqnzBKLKPCGzgD.jpg",
@@ -292,6 +288,7 @@ const additionalMovies: Partial<Movie>[] = [
     cast: ["Miles Teller", "J.K. Simmons", "Melissa Benoist"]
   },
   {
+    id: 22,
     title: "The Prestige",
     overview: "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.",
     posterPath: "https://image.tmdb.org/t/p/w500/5i3aXPNpJ6ZUG6hxAiY6y4lQDjq.jpg",
@@ -304,6 +301,7 @@ const additionalMovies: Partial<Movie>[] = [
     cast: ["Christian Bale", "Hugh Jackman", "Scarlett Johansson"]
   },
   {
+    id: 23,
     title: "The Usual Suspects",
     overview: "A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.",
     posterPath: "https://image.tmdb.org/t/p/w500/bUPmtQzrRhzqYySeiMpI612tLtU.jpg",
@@ -316,6 +314,7 @@ const additionalMovies: Partial<Movie>[] = [
     cast: ["Kevin Spacey", "Gabriel Byrne", "Chazz Palminteri"]
   },
   {
+    id: 24,
     title: "Alien",
     overview: "After a space merchant vessel receives an unknown transmission as a distress call, one of the crew is attacked by a mysterious life form and they soon realize that its life cycle has merely begun.",
     posterPath: "https://image.tmdb.org/t/p/w500/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg",
@@ -328,6 +327,7 @@ const additionalMovies: Partial<Movie>[] = [
     cast: ["Sigourney Weaver", "Tom Skerritt", "John Hurt"]
   },
   {
+    id: 25,
     title: "Casablanca",
     overview: "A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco.",
     posterPath: "https://image.tmdb.org/t/p/w500/5K7cOHoay2mZusSLezBOY0Qxh8z.jpg",
@@ -340,6 +340,7 @@ const additionalMovies: Partial<Movie>[] = [
     cast: ["Humphrey Bogart", "Ingrid Bergman", "Paul Henreid"]
   },
   {
+    id: 26,
     title: "La La Land",
     overview: "While navigating their careers in Los Angeles, a pianist and an actress fall in love while attempting to reconcile their aspirations for the future.",
     posterPath: "https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg",
@@ -352,6 +353,7 @@ const additionalMovies: Partial<Movie>[] = [
     cast: ["Ryan Gosling", "Emma Stone", "John Legend"]
   },
   {
+    id: 27,
     title: "Jurassic Park",
     overview: "During a preview tour, a theme park suffers a major power breakdown that allows its cloned dinosaur exhibits to run amok.",
     posterPath: "https://image.tmdb.org/t/p/w500/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg",
@@ -364,6 +366,7 @@ const additionalMovies: Partial<Movie>[] = [
     cast: ["Sam Neill", "Laura Dern", "Jeff Goldblum"]
   },
   {
+    id: 28,
     title: "The Truman Show",
     overview: "An insurance salesman discovers his whole life is actually a reality TV show.",
     posterPath: "https://image.tmdb.org/t/p/w500/vuza0WqY6sUndYCs1zK77Xliyeu.jpg",
@@ -376,6 +379,7 @@ const additionalMovies: Partial<Movie>[] = [
     cast: ["Jim Carrey", "Laura Linney", "Noah Emmerich"]
   },
   {
+    id: 29,
     title: "The Social Network",
     overview: "As Harvard student Mark Zuckerberg creates the social networking site that would become known as Facebook, he is sued by the twins who claimed he stole their idea, and by the co-founder who was later squeezed out of the business.",
     posterPath: "https://image.tmdb.org/t/p/w500/n0ybibhJtQ5ic3UwL4ZQu8o3R4S.jpg",
@@ -388,6 +392,7 @@ const additionalMovies: Partial<Movie>[] = [
     cast: ["Jesse Eisenberg", "Andrew Garfield", "Justin Timberlake"]
   },
   {
+    id: 30,
     title: "Eternal Sunshine of the Spotless Mind",
     overview: "When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories.",
     posterPath: "https://image.tmdb.org/t/p/w500/5MwkWH9tYHv3mV9OdYTMR5qreIz.jpg",
@@ -401,53 +406,8 @@ const additionalMovies: Partial<Movie>[] = [
   }
 ];
 
-// Create 30 more movies by modifying existing ones
-const extraMovies: Movie[] = [];
-
-for (let i = 0; i < 30; i++) {
-  const baseMovie = baseMovies[i % baseMovies.length];
-  const randomTitle = `${baseMovie.title} Returns`;
-  const randomYear = 2000 + Math.floor(Math.random() * 23); // Random year between 2000-2023
-  const randomMonth = Math.floor(Math.random() * 12) + 1;
-  const randomDay = Math.floor(Math.random() * 28) + 1;
-  
-  extraMovies.push({
-    id: 30 + i,
-    title: randomTitle,
-    overview: `Sequel to the acclaimed ${baseMovie.title}. ${baseMovie.overview.substring(0, 100)}...`,
-    posterPath: baseMovie.posterPath,
-    backdropPath: baseMovie.backdropPath,
-    releaseDate: `${randomYear}-${randomMonth.toString().padStart(2, '0')}-${randomDay.toString().padStart(2, '0')}`,
-    rating: Math.min(10, baseMovie.rating - 0.5 + Math.random()),
-    genres: [...baseMovie.genres],
-    runtime: baseMovie.runtime,
-    director: baseMovie.director,
-    cast: baseMovie.cast
-  });
-}
-
 // Combine all movies into one array
 let mockMovies: Movie[] = [...baseMovies];
-
-// Add additional movies with sequential IDs
-additionalMovies.forEach((movie, index) => {
-  mockMovies.push({
-    id: 21 + index,
-    title: movie.title!,
-    overview: movie.overview!,
-    posterPath: movie.posterPath!,
-    backdropPath: movie.backdropPath!,
-    releaseDate: movie.releaseDate!,
-    rating: movie.rating!,
-    genres: movie.genres!,
-    runtime: movie.runtime,
-    director: movie.director,
-    cast: movie.cast
-  });
-});
-
-// Add the extra movies
-mockMovies = [...mockMovies, ...extraMovies];
 
 // Function to get all movies
 export const getMovies = async (): Promise<Movie[]> => {
