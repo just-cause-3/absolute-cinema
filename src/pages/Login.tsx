@@ -18,10 +18,26 @@ const Login = () => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log(formData);
-    // on successful login
-    // navigate('/');
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        localStorage.setItem('token', data.token);
+        navigate('/');
+      } else {
+        // Handle login error
+        console.error('Login failed');
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

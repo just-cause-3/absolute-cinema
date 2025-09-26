@@ -13,6 +13,7 @@ import TopRated from "./pages/TopRated";
 import WatchlistPage from "./pages/WatchlistPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import PrivateRoute from "./components/PrivateRoute";
 
 const queryClient = new QueryClient();
 
@@ -29,8 +30,10 @@ const App = () => (
           <Route path="/genres" element={<Genres />} />
           <Route path="/top-rated" element={<TopRated />} />
           <Route path="/watchlist" element={<WatchlistPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

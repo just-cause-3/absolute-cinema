@@ -7,9 +7,11 @@ import User from '../models/User.js';
 // Register
 router.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
+  console.log('Register request body:', req.body);
 
   try {
     let user = await User.findOne({ email });
+    console.log('User found:', user);
     if (user) {
       return res.status(400).json({ msg: 'User already exists' });
     }
@@ -23,7 +25,13 @@ router.post('/register', async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
 
-    await user.save();
+    try {
+      await user.save();
+      console.log('User saved:', user);
+    } catch (saveError) {
+      console.error('Error saving user:', saveError);
+      return res.status(500).send('Error saving user');
+    }
 
     const payload = {
       user: {
@@ -49,9 +57,11 @@ router.post('/register', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
+  console.log('Login request body:', req.body);
 
   try {
     let user = await User.findOne({ email });
+    console.log('User found:', user);
     if (!user) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }

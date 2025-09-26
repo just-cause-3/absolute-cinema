@@ -179,9 +179,23 @@ const Navbar = () => {
                 <Moon className="h-4 w-4" />
               )}
             </button>
-            <Link to="/login">
-              <button className="flex items-center justify-center h-9 w-9 rounded-full bg-secondary hover:bg-secondary/80 transition-colors">Login</button>
-            </Link>
+            {localStorage.getItem('token') ? (
+              <button
+                onClick={() => {
+                  localStorage.removeItem('token');
+                  navigate('/login');
+                }}
+                className="flex items-center justify-center h-9 w-9 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link to="/login">
+                <button className="flex items-center justify-center h-9 w-9 rounded-full bg-secondary hover:bg-secondary/80 transition-colors">
+                  Login
+                </button>
+              </Link>
+            )}
           </div>
 
           <div className="md:hidden flex items-center space-x-3">
